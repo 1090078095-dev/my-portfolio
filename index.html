@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>孙铭悦 · 内容策划 / 视频编导</title>
+<style>
+:root{
+  --bg: #FAFAFA;          
+  --surface: #FFFFFF;     
+  --fg: #111111;          
+  --muted: #666666;       
+  --line: #E5E5E5;        
+  --accent: #990000;      
+  --max: 1040px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color:var(--fg);
+  background:var(--bg);
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+section{padding:100px 0;border-top:1px solid var(--line);}
+h1,h2,h3{line-height:1.3;margin:0 0 16px;font-weight:600;}
+
+h1, h2, h3, .cat-title, .drafts-heading, .ending h2 {
+  font-family: "Georgia", "Songti SC", "SimSun", serif;
+}
+
+h2{
+  font-size:13px;letter-spacing:.2em;
+  color:var(--muted);font-weight:normal;margin-bottom:48px;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 16px;
+}
+h2::after {
+  content: ""; flex: 1; height: 1px; background: var(--line);
+}
+a{color:var(--fg);text-decoration:none;transition:color 0.3s;}
+a:hover{color:var(--accent);}
+
+/* ===== 导航 ===== */
+.nav{
+  position:sticky;top:0;z-index:10;
+  background:rgba(250, 250, 250, 0.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+}
+.nav .logo{font-weight:600;letter-spacing:.05em;font-size:20px;font-family: "Georgia", serif;}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;}
+.nav a{
+  color:var(--muted);font-size:14px;font-weight:500;
+  padding:4px 0;position:relative;
+}
+.nav a:hover{color:var(--fg);text-decoration:none;}
+.nav a.active{color:var(--fg);font-weight:600;}
+.nav a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;
+  height:1px;background:var(--fg);
+}
+
+/* ===== 关于我 ===== */
+.hero{padding:120px 0 100px; border-top: none;}
+.hero-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+.hero-content { flex: 1; min-width: 0; }
+
+.hero .tag{
+  display:inline-block;font-size:12px;font-weight:600;letter-spacing:0.15em;
+  color:var(--muted);text-transform:uppercase;margin-bottom:24px;
+}
+.hero h1{
+  font-size:clamp(40px,5vw,56px);
+  letter-spacing:-.02em;
+  margin-bottom:24px;
+  color:var(--fg);
+}
+.hero .role{
+  font-size:20px;color:var(--muted);font-weight:400;letter-spacing:0.05em;
+  margin:0 0 40px;
+}
+.hero .summary{
+  font-size:17px;color:var(--fg);max-width:760px;
+  margin:0 0 48px;line-height:1.9;font-weight:400;
+}
+/* 删除了 summary strong 的样式，因为现在都是纯文本 */
+
+.hero-contact{
+  display:flex; flex-direction: column; gap:16px;
+  margin:0 0 48px; max-width:400px;
+}
+.hero-contact .item{
+  display:flex;align-items:center;gap:12px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--line);
+  font-size:15px;color:var(--fg);
+}
+.hero-contact .item a { color: var(--fg); }
+.hero-contact .item a:hover { color: var(--accent); }
+
+.btn{
+  display:inline-block;padding:14px 32px;
+  background:var(--fg);color:#FFF;font-size:14px;font-weight:500;
+  margin-right:16px;transition:all .3s ease;
+  border:1px solid var(--fg);
+  letter-spacing: 0.05em;
+}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#FFF;text-decoration:none;}
+
+/* 照片区域 */
+.hero-photo {
+  flex-shrink: 0;
+  width: 160px;
+  margin-top: 10px;
+}
+.hero-photo .photo-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 4px;
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-photo .caption {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ===== 经历 ===== */
+.timeline{border-left:1px solid var(--line);padding-left:40px;margin-top: 20px;}
+.timeline .item{position:relative;padding-bottom:56px;}
+.timeline .item:last-child{padding-bottom:0;}
+.timeline .item::before{content:"";position:absolute;left:-44px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--fg);}
+.timeline .when{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:8px;letter-spacing: 0.05em;}
+.timeline .what{font-weight:600;font-size:20px;margin-bottom:12px;}
+.timeline ul{margin:0;padding-left:18px;font-size:15px;color:var(--muted);line-height:1.9;font-weight: 400;}
+.timeline li{margin-bottom:8px;}
+
+/* ===== 作品 ===== */
+.work-category{margin-bottom:80px;}
+.work-category:last-child{margin-bottom:0;}
+.cat-title{font-size:24px;font-weight:600;margin:0 0 40px;color:var(--fg);letter-spacing: -0.01em;}
+.cat-rows{display:flex;flex-direction:column;gap:48px;}
+.work-row{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:stretch;}
+.work-row.alt .preview-box{grid-column:2;grid-row:1;}
+.work-row.alt .info-box{grid-column:1;grid-row:1;}
+.preview-box{border:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;transition: box-shadow 0.3s;}
+.preview-box:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+.cover-link{display:block; padding: 24px 24px 0 24px;}
+.cover{aspect-ratio:16/10;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15px;font-weight:500;text-align:center;padding:24px;line-height:1.5;overflow: hidden;}
+.cover img{width:100%;height:100%;object-fit:cover;display:block;transition: transform 0.5s ease;}
+a.cover-link:hover .cover img{transform: scale(1.02);}
+.link-bar{padding:16px 24px;display: flex;justify-content: space-between;}
+.link-bar a, .link-bar .disabled{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;text-transform: uppercase; letter-spacing: 0.05em;}
+.info-box{background:var(--surface);padding:40px;border:1px solid var(--line);display:flex;flex-direction:column;justify-content: center;}
+.info-box .note{display:inline-block;align-self:flex-start;font-size:11px;font-weight:600;color:var(--accent);border:1px solid var(--accent);padding:2px 10px;margin-bottom:20px;text-transform: uppercase; letter-spacing: 0.05em;}
+.info-box h3{font-size:22px;margin-bottom:20px;line-height:1.4;font-weight:600;}
+.info-box .desc{font-size:15px;color:var(--muted);margin:0;flex:1;line-height:1.9;font-weight:400;}
+
+/* ===== 古法烹饪 ===== */
+.drafts-block{margin-top:80px;padding-top:48px;border-top:1px solid var(--line);}
+.drafts-heading{font-size:24px;font-weight:600;margin:0 0 12px;color:var(--fg);}
+.drafts-intro{font-size:15px;color:var(--muted);font-weight: 400;max-width:800px;margin:0 0 48px;}
+.draft-list{display:flex;flex-direction:column;gap:20px;}
+.draft-card{border:1px solid var(--line);background:var(--surface);padding:24px 32px;display:flex; justify-content:space-between; align-items:center;transition: border-color 0.2s;}
+.draft-card:hover { border-color: #CCC; }
+.draft-main{flex:1;}
+.draft-main h3{font-size:18px;margin-bottom:6px;font-weight:600;}
+.draft-sub{font-size:14px;color:var(--muted);margin:0;}
+.draft-side{display:flex; flex-direction:column; align-items:flex-end; gap:8px; margin-left: 24px;}
+.draft-tag{font-size:12px;color:var(--muted);}
+.draft-status{font-size:12px;font-weight:600;color:var(--fg);display:flex;align-items:center;gap:6px;}
+.draft-status::before{content:"";width:6px;height:6px;border-radius:50%;background:#CCC;}
+.draft-status.done::before{background:var(--fg);}
+
+/* ===== 技能 ===== */
+.what-grid{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.what-card{padding:32px 0;border-top: 1px solid var(--fg);}
+.what-card h3{font-size:20px;margin-bottom:12px;font-weight:600;}
+.what-card p{font-size:15px;color:var(--muted);margin:0;line-height:1.8;font-weight:400;}
+
+/* ===== 结尾 ===== */
+.ending{padding:160px 0;text-align:center;border-top:1px solid var(--line);}
+.ending h2{font-size:clamp(32px,5vw,48px);color:var(--fg);font-weight:600;margin:0 0 16px;line-height:1.3;letter-spacing:-0.01em;justify-content: center;}
+.ending h2::after { display: none; }
+.ending .sub{margin:0 0 56px;font-size:15px;color:var(--muted);letter-spacing:0.1em;}
+.ending .contact{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.ending .contact a{display:flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--line);color:var(--fg);font-size:14px;font-weight:500;transition:all .3s; background: #FFF;}
+.ending .contact a:hover{border-color:var(--fg);text-decoration:none;}
+
+footer{padding:40px 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);text-align:center;letter-spacing: 0.05em;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+@media (max-width: 800px){
+  .hero-grid { flex-direction: column-reverse; gap: 32px; }
+  .hero-photo { width: 120px; margin: 0; align-self: flex-start; }
+  .work-row, .work-row.alt{grid-template-columns:1fr;gap:24px;}
+  .work-row.alt .preview-box, .work-row.alt .info-box{grid-column:auto;grid-row:auto;}
+  .info-box { padding: 32px 24px; }
+}
+@media (max-width:640px){
+  section{padding:64px 0;}
+  .hero{padding:80px 0 64px;}
+  .nav ul{gap:16px;}
+  .nav a{font-size:13px;}
+  .btn { width: 100%; margin-bottom: 12px; margin-right: 0; text-align: center; }
+  .draft-card { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .draft-side { margin-left: 0; align-items: flex-start; }
+  .ending{padding:100px 0 80px;}
+  .ending .contact a{width: 100%;justify-content:center;}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <span class="logo">孙铭悦</span>
+    <ul>
+      <li><a href="#about" class="active">关于我</a></li>
+      <li><a href="#exp">工作经历</a></li>
+      <li><a href="#work">个人作品</a></li>
+      <li><a href="#whatido">我会做什么</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="about">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <!-- 删除了 · 苏州 -->
+        <span class="tag">Open for Opportunities</span>
+        <h1>你好，我叫孙铭悦</h1>
+        <p class="role">内容策划 / 视频编导</p>
+
+        <!-- 去掉了加粗 -->
+        <p class="summary">
+          3年以上头部内容机构文案策划与团队管理经验，擅长寻找独特视角拆解目标。
+          累计产出多篇千万级播放视频作品及10万+图文，
+          能独立负责项目策划与执行并带领团队高效交付。
+        </p>
+
+        <div class="hero-contact">
+          <div class="item"><a href="tel:13073513724">📱 13073513724</a></div>
+          <div class="item"><a href="mailto:smy7695@163.com">✉️ smy7695@163.com</a></div>
+          <div class="item"><span>💼 在职 · 开放机会</span></div>
+        </div>
+
+        <!-- 删除了联系我按钮，给下载按钮加上 target="_blank" -->
+        <a class="btn" href="./孙铭悦个人简历.pdf" target="_blank">⬇ 一键下载简历</a>
+      </div>
+
+      <div class="hero-photo">
+        <div class="photo-wrapper">
+          <img src="./简历照片.jpg" alt="孙铭悦的照片">
+        </div>
+        <div class="caption">
+          <span>Sun Mingyue</span>
+          <span>Content Strategist</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="exp">
+  <div class="wrap reveal">
+    <h2>Experience / 工作经历</h2>
+    <div class="timeline">
+      <div class="item">
+        <div class="when">2026.06 — 至今</div>
+        <div class="what">苏州大禹网络 · 文案策划 / 编导</div>
+        <ul>
+          <li>编导：负责IP账号从0到1的创意核心，包括选题、脚本、动画创意、封标拟定全流程。</li>
+          <li>内容策划：深入研究内容传播规律与用户偏好，分析热门爆款内容，总结可复用的创作方法论并应用于实际项目中，持续提升内容传播效果。为短视频的播放量、完播率和用户互动负责。</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">2023.07 — 2026.04</div>
+        <div class="what">星球研究所 · 撰稿人 & 小组负责人</div>
+        <ul>
+          <li>内容创作：独立负责视频文案及公众号图文从0到1的全流程创作，深度挖掘选题并结合品牌需求制定内容方向。</li>
+          <li>项目管理：作为项目负责人，与设计、后期等团队配合，确保内容创意与表达的一致性。</li>
+          <li>团队管理：具备2年以上团队管理经验，主导新人成长计划，通过1v1带教在3个月内培养所有新成员具备独立产出能力。</li>
+        </ul>
+      </div>
+      <div class="item">
+        <div class="when">2020.09 — 2023.07</div>
+        <div class="what">西安建筑科技大学 · 建筑学 · 硕士</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected Works / 个人作品</h2>
+    <div id="workStack"></div>
+
+    <div class="drafts-block">
+      <h3 class="drafts-heading reveal">那些未完成的，还在古法烹饪中……</h3>
+      <p class="drafts-intro reveal">还有部分健康/医学科普视频的完整脚本（覆盖女性健康、药物科普、人体感官等方向），因公司后期排期暂未上线。</p>
+      <div class="draft-list" id="draftList"></div>
+    </div>
+  </div>
+</section>
+
+<section id="whatido">
+  <div class="wrap reveal">
+    <h2>Capabilities / 我会做什么</h2>
+    <div class="what-grid">
+      <div class="what-card">
+        <h3>内容策划</h3>
+        <p>从选题挖掘到内容方向制定，结合品牌需求与用户偏好，策划可传播的内容。</p>
+      </div>
+      <div class="what-card">
+        <h3>视频编导</h3>
+        <p>负责IP账号从0到1的创意核心，覆盖选题、脚本、动画创意、封面标题全流程。</p>
+      </div>
+      <div class="what-card">
+        <h3>文案撰写</h3>
+        <p>视频文案与公众号图文从0到1创作，独立完成深度选题与长文撰写。</p>
+      </div>
+      <div class="what-card">
+        <h3>封标拟定</h3>
+        <p>根据各平台受众特点，拟定合适的封面标题、宣传文案。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ending" id="ending">
+  <div class="wrap reveal">
+    <h2>下一页，我们一起书写</h2>
+    <p class="sub">期待与你合作</p>
+    <div class="contact">
+      <a href="tel:13073513724">📱 13073513724</a>
+      <a href="mailto:smy7695@163.com">✉️ smy7695@163.com</a>
+      <!-- 底部也改成在新页面打开 -->
+      <a href="./孙铭悦个人简历.pdf" target="_blank">📄 下载 PDF 简历</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 孙铭悦 · 内容策划 / 视频编导
+</footer>
+
+<script>
+const categories = [
+  {
+    name: '工程类',
+    items: [
+      { title: '平陆运河，非挖不可？', note: '账号播放第一', cover: './cover1.jpg', link: 'https://www.bilibili.com/video/BV1fYes6xEmq/', desc: '围绕平陆运河这一重大工程，从公众“为什么非挖不可”的疑问切入，独立完成视频文案。重点把工程必要性转译成可理解的叙事，并与视觉团队配合呈现。最终成为账号播放量第一的作品。' },
+      { title: '没路、没电、没水……又怎样？中国不允许孤岛存在！', note: '', cover: './cover2.jpg', link: 'https://www.bilibili.com/video/BV1Ny7sz3Ewf/', desc: '某空调品牌合作项目。从“孤岛为什么不能没有电”切入，把海岛通路、通水、通电的工程问题拆解成普通人能理解的叙事，独立完成视频文案。难点在于把工程逻辑转译成生活场景，同时自然带出品牌与“电”的关联。' },
+      { title: '这位道友，去昆仑吗？路已修好！', note: '', cover: './cover3.jpg', link: 'https://www.bilibili.com/video/BV17F4QzbEd4/', desc: '某汽车品牌合作项目。选取三条高原公路，分别对应“修路让居民有机会”“修路让国家有底气”“修路让世界更通达”三个层面，独立完成文案与结构设计。把汽车品牌与“修路”的关联落在“抵达”上，而不是硬讲产品。' }
+    ]
+  },
+  {
+    name: '人文历史类',
+    items: [
+      { title: '这楼碉爆了！广东唯一的世界文化遗产！', note: '', cover: './cover4.jpg', link: 'https://www.bilibili.com/video/BV17v9MY8Ew7/', desc: '账号“文明史诗”系列选题，独立完成视频文案。面对“广东唯一世界文化遗产”这一相对冷门的题材，选择用情景演绎替代纯解说，把中国劳工赴美谋生的历史事件嵌入剧情，让科普有记忆锚点。' },
+      { title: '乌蒙山连着______，中国人爆改了山湾湾！', note: '2025中国正能量网络精品', cover: './cover5.jpg', link: 'https://www.bilibili.com/video/BV1iw9yYZEns/', desc: '云南曲靖政府合作，聚焦曲靖市的地理改造与人文故事，首次将乌蒙山与城市强绑定。独立完成文案创作、全平台封面标题及配套公众号宣传文案。视频跳出账号往常地域科普片严肃风格，深度挖掘地域细节和故事，获 2025 中国正能量网络精品。' },
+      { title: '我们在云南边境，拍了一部《疯狂精灵城》', note: '', cover: './cover6.jpg', link: 'https://www.bilibili.com/video/BV1XjSaBvEMP/', desc: '云南临沧政府合作项目。在宣传资料有限的前提下，放弃面面俱到的城市介绍，以“边境小城像一座疯狂精灵城”为叙事切口，独立完成视频文案。' },
+      { title: '什么“流放岭南”，那是去岭南做大做强！', note: '', cover: './cover7.jpg', link: 'https://www.bilibili.com/video/BV1TPUsBqEUF/', desc: '韶关市合作项目。改变叙述视角将受众从韶关人放大至广府人。提出“打乱时空”的创意概念，用“一镜到底”串联广府历史名人，并把粤语影视剧元素贯穿全篇，完成从创意到脚本的落地。' }
+    ]
+  },
+  {
+    name: '人体医学类',
+    items: [
+      { title: '当1000倍剂量的毒品进入身体，会发生什么？', note: 'B站单平台700w+播放', cover: './cover8.jpg', link: 'https://www.bilibili.com/video/BV16s8z6WENQ/', desc: '健康医学科普视频，负责从脚本到封面标题的全流程。B站单平台 700w+ 播放，为账号近 2 年最佳。' }
+    ]
+  },
+  {
+    name: '活动推广类',
+    items: [
+      { title: '《这个像素小人真的在用心教你啊》', note: '', cover: './cover9.jpg', link: 'https://v.douyin.com/KATEOOHCt8s/', desc: '抖音宠粉活动视频，负责创意与脚本。创造性给出“营销号体”“动物世界体”两种抽象思路，结合平台语感和活动场景、后期操作难度，最终选择营销号体。' }
+    ]
+  }
+];
+
+const drafts = [
+  { title: '《如果不再羞耻地看自己》', direction: '女性健康', summary: '将晦涩的妇科疾病原理，转化为“奇幻隧道探险”与“菌群大战”的视觉脚本。', status: '脚本完成 · 未上线', statusClass: '' },
+  { title: '《肺力咳》《康妇凝胶》', direction: '药物科普 · 药企合作', summary: '药企合作项目，产出兼具医学严谨性与趣味性的医疗健康内容。', status: '商业定制 · 已交付', statusClass: 'done' },
+  { title: '《触觉，嗅觉，听觉，失去一个，你会选哪个？》', direction: '人体感官', summary: '以“第八号当铺”为设定，完成沉浸式痛感科普脚本。', status: '脚本完成 · 未上线', statusClass: '' },
+  { title: '《音乐怎么悄悄改变你的大脑》', direction: '人体 × 科技', summary: '某品牌音乐技术宣传，人体与科技相结合。', status: '脚本完成 · 未上线', statusClass: '' },
+  { title: '《自来水怪味指南》', direction: '净水器推广', summary: '某品牌净水器推广，以水的视角科普了自来水从水厂出来一路是如何变脏的，并简单测评了不同净水器净水效果。', status: '脚本完成 · 未上线', statusClass: '' },
+  { title: '《脂肪是怎么守护人类的？》', direction: '奶粉品牌广告', summary: '某奶粉品牌广告。', status: '脚本完成 · 未上线', statusClass: '' }
+];
+
+function escapeAttr(str){ return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;'); }
+const stack = document.getElementById('workStack');
+
+categories.forEach(cat => {
+  const catWrap = document.createElement('div');
+  catWrap.className = 'work-category';
+  const catTitle = document.createElement('h3');
+  catTitle.className = 'cat-title reveal';
+  catTitle.textContent = cat.name;
+  catWrap.appendChild(catTitle);
+  const rowsWrap = document.createElement('div');
+  rowsWrap.className = 'cat-rows';
+
+  cat.items.forEach((p, i) => {
+    const isAlt = i % 2 === 1;
+    const coverInner = p.cover ? `<img src="${escapeAttr(p.cover)}" alt="${escapeAttr(p.title)}">` : `<span>${p.title}</span>`;
+    const coverBlock = p.link ? `<a class="cover-link" href="${escapeAttr(p.link)}" target="_blank" rel="noopener"><div class="cover">${coverInner}</div></a>` : `<div class="cover-link"><div class="cover">${coverInner}</div></div>`;
+    const linkBar = p.link ? `<div class="link-bar"><a href="${escapeAttr(p.link)}" target="_blank" rel="noopener">查看项目 <span>↗</span></a></div>` : `<div class="link-bar"><span class="disabled">链接待补充 <span>—</span></span></div>`;
+    const noteBlock = p.note ? `<span class="note">${p.note}</span>` : '';
+    const descBlock = p.desc ? `<p class="desc">${p.desc}</p>` : `<p class="desc placeholder">项目简介待补充。</p>`;
+
+    const row = document.createElement('div');
+    row.className = 'work-row reveal' + (isAlt ? ' alt' : '');
+    row.innerHTML = `
+      <div class="preview-box">
+        ${coverBlock}
+        ${linkBar}
+      </div>
+      <div class="info-box">
+        ${noteBlock}
+        <h3>${p.title}</h3>
+        ${descBlock}
+      </div>
+    `;
+    rowsWrap.appendChild(row);
+  });
+  catWrap.appendChild(rowsWrap);
+  stack.appendChild(catWrap);
+});
+
+const draftList = document.getElementById('draftList');
+drafts.forEach((d, i) => {
+  const card = document.createElement('div');
+  card.className = 'draft-card reveal';
+  card.innerHTML = `
+    <div class="draft-main">
+      <h3>${d.title}</h3>
+      <p class="draft-sub">${d.summary}</p>
+    </div>
+    <div class="draft-side">
+      <span class="draft-tag">${d.direction}</span>
+      <span class="draft-status ${d.statusClass || ''}">${d.status}</span>
+    </div>
+  `;
+  draftList.appendChild(card);
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const navLinks = document.querySelectorAll('.nav a');
+const sections = ['about','exp','work','whatido'].map(id => document.getElementById(id));
+function updateNav(){
+  let current = 'about';
+  sections.forEach(sec => {
+    if (sec && window.scrollY >= sec.offsetTop - 140) current = sec.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+</script>
+
+</body>
+</html>
